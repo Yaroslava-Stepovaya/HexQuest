@@ -1,5 +1,6 @@
 ﻿// Assets/Scripts/Runtime/MapManager.cs
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -90,5 +91,9 @@ public class MapManager : MonoBehaviour
         if (a < 0 || a >= _sectors.Count || b < 0 || b >= _sectors.Count)
             return false;
         return _sectors[a].TryGetEdge(b, out _);
+    }
+    public Sector GetSectorByID(int id)
+    {
+        return _sectors.Where(x => x.Id == id).FirstOrDefault();
     }
 }
