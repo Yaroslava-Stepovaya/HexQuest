@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 1110957901}
   - component: {fileID: 1110957900}
   - component: {fileID: 1110957899}
+  - component: {fileID: 1110957902}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -467,6 +468,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1110957902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110957898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0e5178d51aa7546becc4d195df0a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapManager: {fileID: 1110957900}
+  lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  edgeColor: {r: 0.2, g: 1, b: 0.6, a: 0.9}
+  lockedColor: {r: 1, g: 0.35, b: 0.35, a: 0.95}
+  edgeWidth: 0.2
+  segments: 16
+  centroidPrefab: {fileID: 7254659514013394626, guid: a992fb17e5bd9cb42b477f985b10605d, type: 3}
+  centroidScale: 1.2
+  bendFactor: 0.25
+  noiseFactor: 0.15
+  seed: 1337
+  sortingLayerName: Default
+  sortingOrder: 0
 --- !u!1 &1145457318
 GameObject:
   m_ObjectHideFlags: 0
