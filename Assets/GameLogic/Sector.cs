@@ -10,6 +10,7 @@ public sealed class Sector
     public IReadOnlyList<Vector3Int> Cells => _cells;  //list containing all tiles 
     public Vector3 CenterWorld { get; private set; }   //sector's centroid
 
+    public bool Blocked { get; set; }
    
     // dictionary that contains information about sector's edges and its neighbours
     private readonly Dictionary<int, SectorEdge> _edges = new();

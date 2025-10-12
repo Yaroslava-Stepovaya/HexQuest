@@ -417,8 +417,10 @@ GameObject:
   - component: {fileID: 1110957900}
   - component: {fileID: 1110957899}
   - component: {fileID: 1110957902}
+  - component: {fileID: 1110957903}
+  - component: {fileID: 1110957904}
   m_Layer: 0
-  m_Name: MapManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,35 +490,38 @@ MonoBehaviour:
   segments: 16
   centroidPrefab: {fileID: 7254659514013394626, guid: a992fb17e5bd9cb42b477f985b10605d, type: 3}
   centroidScale: 1.2
+  TextSectorIDColor: {r: 1, g: 1, b: 0.6, a: 0.5}
+  TextSectorIDSize: 7
+  TextSectorIDNumberInLayer: 0
+  labelRadius: 0.4
+  labelAngleDeg: 20
   bendFactor: 0.25
   noiseFactor: 0.15
   seed: 1337
   sortingLayerName: Default
   sortingOrder: 0
---- !u!1 &1145457318
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1145457320}
-  - component: {fileID: 1145457319}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1145457319
+--- !u!114 &1110957903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145457318}
+  m_GameObject: {fileID: 1110957898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f02f1a23cdd3348995c77bdbf8368a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
+  _mapManager: {fileID: 1110957900}
+  _gameManager: {fileID: 1110957904}
+--- !u!114 &1110957904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110957898}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b21cf778aeecc2e47bd42d16c818c684, type: 3}
@@ -525,21 +530,6 @@ MonoBehaviour:
   mapManager: {fileID: 1110957900}
   heroViewPrefab: {fileID: 6496481588644340013, guid: 076da83d971ddd043827006ee8688ef3, type: 3}
   unitViews: []
---- !u!4 &1145457320
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145457318}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.31487, y: -1.82051, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254212770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,4 +2775,3 @@ SceneRoots:
   - {fileID: 1254212772}
   - {fileID: 23267750}
   - {fileID: 1110957901}
-  - {fileID: 1145457320}

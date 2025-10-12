@@ -6,6 +6,7 @@ public class MapClickHandler : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private MapManager _mapManager;
+    [SerializeField] private GameManager _gameManager;
 
     private void Awake()
     {
@@ -14,6 +15,9 @@ public class MapClickHandler : MonoBehaviour
 
         if (_mapManager == null)
             Debug.LogWarning("MapClickHandler: MapManager not set or empty.");
+
+        if (_gameManager == null)
+            Debug.LogWarning("MapClickHandler: GameManager not set or empty.");
 
     }
 
@@ -32,6 +36,7 @@ public class MapClickHandler : MonoBehaviour
             {
                 Debug.Log($"Clicked sector {sector.Id}");
                 // действия по клику
+                _gameManager.HandleSectorClick(sector.Id);
             }
         }
     }

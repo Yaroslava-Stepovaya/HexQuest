@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+
 //map management during runtime
 public class MapManager : MonoBehaviour
 {
@@ -15,9 +17,10 @@ public class MapManager : MonoBehaviour
     private List<Sector> _sectors = new();
     private Dictionary<Vector3Int, int> _cellToSector = new();
 
-    
+
     public IReadOnlyList<Sector> Sectors => _sectors;
 
+    public SectorGraphPathfinder Pathfinder { get; private set; }
 
 #if UNITY_EDITOR
     [ContextMenu("Reload from MapAsset")]     //allows to update the map using context menu
@@ -59,7 +62,12 @@ public class MapManager : MonoBehaviour
         foreach (var s in _sectors)
             foreach (var c in s.Cells)
                 _cellToSector[c] = s.Id;
+
+        Pathfinder = new SectorGraphPathfinder(_sectors);
     }
+
+
+
     // trying to get sector by tilemap's ID
     public bool TryGetSectorByCell(Vector3Int cell, out Sector sector)
     {
@@ -95,5 +103,19 @@ public class MapManager : MonoBehaviour
     public Sector GetSectorByID(int id)
     {
         return _sectors.Where(x => x.Id == id).FirstOrDefault();
+    }
+
+    public bool IsEdgeLocked(int a, int b)
+    {
+        var sa = GetSectorByID(a);
+        if (sa == null) return true; // если сектора нет — считаем непроходимым
+        if (!sa.TryGetEdge(b, out var edge)) return true; // нет связи
+
+        return edge.Locked; // true = замок
+    }
+
+    public bool IsSectorBlocked(int id)
+    {
+        return GetSectorByID(id).Blocked;
     }
 }

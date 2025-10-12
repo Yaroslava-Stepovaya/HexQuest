@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public List<UnitView> unitViews = new();         // их визуалы
 
     private HeroUnit hero;
+    private UnitView heroView;
 
     private void Start()
     {
@@ -50,19 +52,47 @@ public class GameManager : MonoBehaviour
         units.Add(hero);
 
         // 4) Спавним визуал
-        var view = Instantiate(heroViewPrefab, startSector.CenterWorld, Quaternion.identity);
-        view.name = "HeroView";
-        view.Bind(hero, snapToSector: true);
-        unitViews.Add(view);
+        heroView = Instantiate(heroViewPrefab, startSector.CenterWorld, Quaternion.identity);
+        heroView.name = "HeroView";
+        heroView.Bind(hero, snapToSector: true);
+        unitViews.Add(heroView);
 
-        List<Sector> path = new List<Sector>();
+//        List<Sector> path = new List<Sector>();
 
-        foreach (var sec in mapManager.Sectors)
-        {
-            if (sec.Id == 0)
-                continue;
-            path.Add(mapManager.GetSectorByID(sec.Id));
-        }
-        view.GetComponent<UnitView>().MoveAlongPath(path);
+//        foreach (var sec in mapManager.Sectors)
+//        {
+//            if (sec.Id == 0)
+//                continue;
+//            path.Add(mapManager.GetSectorByID(sec.Id));
+//        }
+//        view.GetComponent<UnitView>().MoveAlongPath(path);
     }
+
+    public void HandleSectorClick(int targetSectorId)
+    {
+        if (hero == null) return;
+        int start = hero.CurrentSector.Id;
+        int goal = targetSectorId;
+
+        var pf = mapManager.Pathfinder;
+
+        bool ok = pf.TryFindPath(
+          start, goal, out var path,
+          canEnterSector: id => !mapManager.IsSectorBlocked(id),
+          canTraverseEdge: (a, b) => !mapManager.IsEdgeLocked(a, b)
+      );
+
+        if (ok) {
+
+            List<Sector> sectorPath = new List<Sector>();
+
+            foreach (int i in path)
+                sectorPath.Add(mapManager.GetSectorByID(i));
+
+            heroView.GetComponent<UnitView>().MoveAlongPath(sectorPath);
+
+        }
+    }
+
+    
 }
