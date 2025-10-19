@@ -71,7 +71,11 @@ public sealed class SectorGraphPathfinder
                 {
                     int nb = nbBuf[i];
                     if (!ProcessNeighbor(cur, nb)) continue;
-                    if (nb == goalId) { path = Reconstruct(parent, startId, goalId); return true; }
+                    if (nb == goalId) 
+                    {
+                        path = Reconstruct(parent, startId, goalId); 
+                        return true; 
+                    }
                     queue.Enqueue(nb);
                 }
             }
