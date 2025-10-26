@@ -31,6 +31,11 @@ public sealed class Sector
         _edges[toSectorId] = new SectorEdge(Id, toSectorId, weight, locked, requiredKeyId);
     }
 
+    public void RemoveEdge(int toSectorId)
+    {
+        _edges.Remove(toSectorId);
+    }
+
     //get information about edge if it exists
     public bool TryGetEdge(int toSectorId, out SectorEdge edge)
     {

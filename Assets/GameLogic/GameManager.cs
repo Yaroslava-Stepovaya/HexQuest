@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public List<Unit> units = new();                 // логические юниты
     public List<UnitView> unitViews = new();         // их визуалы
 
+    public MapManager MapManager => mapManager; 
     private HeroUnit hero;
     private UnitView heroView;
 

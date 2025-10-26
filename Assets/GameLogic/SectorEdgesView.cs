@@ -49,6 +49,7 @@ public class SectorEdgesView : MonoBehaviour
     private void Start()
     {
         Rebuild(); // сразу строим линии при запуске
+        GameEvents.RebuildEdges += Rebuild;
     }
 
     // Перестроить линии заново (например, после обновления карты)

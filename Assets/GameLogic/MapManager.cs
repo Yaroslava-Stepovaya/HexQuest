@@ -118,4 +118,22 @@ public class MapManager : MonoBehaviour
     {
         return GetSectorByID(id).Blocked;
     }
+
+    public void SafeSetEdge(int a, int b, bool exists)
+    {
+        if (exists)
+        {
+            GetSectorByID(a).RemoveEdge(b);
+            GetSectorByID(b).RemoveEdge(a);
+        }
+        else
+        {
+            GetSectorByID(a).AddOrUpdateEdge(b);
+            GetSectorByID(b).AddOrUpdateEdge(a);
+        }
+
+            GameEvents.RebuildEdges?.Invoke();
+    }
+
+    
 }

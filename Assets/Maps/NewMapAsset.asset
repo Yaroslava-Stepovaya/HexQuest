@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectors:
   - id: 0
-    displayColor: {r: 0.86415094, g: 0.40272692, b: 0.80531824, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: -1, y: -4, z: 0}
     - {x: 0, y: -4, z: 0}
@@ -37,16 +37,16 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyId: 
-    - toSectorId: 1
-      weight: 1
-      locked: 0
-      requiredKeyId: 
     - toSectorId: 3
       weight: 1
       locked: 0
       requiredKeyId: 
+    - toSectorId: 1
+      weight: 1
+      locked: 0
+      requiredKeyId: 
   - id: 1
-    displayColor: {r: 0.09958705, g: 0.2502542, b: 0.7433963, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: -2, y: -1, z: 0}
     - {x: -2, y: 0, z: 0}
@@ -68,14 +68,6 @@ MonoBehaviour:
     - {x: -5, y: 6, z: 0}
     centerWorld: {x: 1.5, y: -3.030918, z: 0}
     edges:
-    - toSectorId: 0
-      weight: 1
-      locked: 0
-      requiredKeyId: 
-    - toSectorId: 2
-      weight: 1
-      locked: 0
-      requiredKeyId: 
     - toSectorId: 5
       weight: 1
       locked: 0
@@ -84,8 +76,12 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyId: 
+    - toSectorId: 0
+      weight: 1
+      locked: 0
+      requiredKeyId: 
   - id: 2
-    displayColor: {r: 0.56807745, g: 0.09772151, b: 0.690566, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: -1, y: -1, z: 0}
     - {x: 0, y: -1, z: 0}
@@ -104,10 +100,6 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyId: 
-    - toSectorId: 1
-      weight: 1
-      locked: 0
-      requiredKeyId: 
     - toSectorId: 3
       weight: 1
       locked: 0
@@ -121,7 +113,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 3
-    displayColor: {r: 0.09958705, g: 0.2502542, b: 0.7433963, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: 1, y: -1, z: 0}
     - {x: 2, y: -1, z: 0}
@@ -129,10 +121,6 @@ MonoBehaviour:
     - {x: 2, y: 1, z: 0}
     centerWorld: {x: -0.1875, y: 2.0566945, z: 0}
     edges:
-    - toSectorId: 0
-      weight: 1
-      locked: 0
-      requiredKeyId: 
     - toSectorId: 2
       weight: 1
       locked: 0
@@ -141,8 +129,12 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyId: 
+    - toSectorId: 0
+      weight: 1
+      locked: 0
+      requiredKeyId: 
   - id: 4
-    displayColor: {r: 0.015686262, g: 0.5592802, b: 0.84313726, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: 3, y: 1, z: 0}
     - {x: 3, y: 2, z: 0}
@@ -184,11 +176,11 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyId: 
-    - toSectorId: 8
+    - toSectorId: 7
       weight: 1
       locked: 0
       requiredKeyId: 
-    - toSectorId: 7
+    - toSectorId: 8
       weight: 1
       locked: 0
       requiredKeyId: 
@@ -197,7 +189,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 5
-    displayColor: {r: 0.8415094, g: 0.017465271, b: 0.017465271, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: -1, y: 2, z: 0}
     - {x: 0, y: 2, z: 0}
@@ -213,16 +205,12 @@ MonoBehaviour:
     - {x: -2, y: 5, z: 0}
     - {x: -3, y: 4, z: 0}
     - {x: 0, y: 5, z: 0}
-    - {x: -1, y: 6, z: 0}
     - {x: -2, y: 6, z: 0}
     - {x: -3, y: 5, z: 0}
     - {x: -4, y: 5, z: 0}
-    - {x: 0, y: 6, z: 0}
-    - {x: -1, y: 7, z: 0}
-    - {x: -2, y: 7, z: 0}
     - {x: -3, y: 6, z: 0}
     - {x: -3, y: 7, z: 0}
-    centerWorld: {x: 3.4565217, y: -1.0542324, z: 0}
+    centerWorld: {x: 3.1578948, y: -1.1394428, z: 0}
     edges:
     - toSectorId: 1
       weight: 1
@@ -236,20 +224,16 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyId: 
-    - toSectorId: 6
-      weight: 1
-      locked: 0
-      requiredKeyId: 
     - toSectorId: 7
       weight: 1
       locked: 0
       requiredKeyId: 
-    - toSectorId: 8
+    - toSectorId: 6
       weight: 1
       locked: 0
       requiredKeyId: 
   - id: 6
-    displayColor: {r: 0.56807745, g: 0.09772151, b: 0.690566, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: -4, y: 6, z: 0}
     - {x: -4, y: 7, z: 0}
@@ -290,16 +274,20 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 7
-    displayColor: {r: 0.86415094, g: 0.40272692, b: 0.80531824, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
+    - {x: -1, y: 6, z: 0}
+    - {x: 0, y: 6, z: 0}
+    - {x: -1, y: 7, z: 0}
+    - {x: -2, y: 7, z: 0}
     - {x: 0, y: 7, z: 0}
-    - {x: 0, y: 8, z: 0}
     - {x: -1, y: 8, z: 0}
     - {x: -2, y: 8, z: 0}
+    - {x: 0, y: 8, z: 0}
     - {x: -1, y: 9, z: 0}
     - {x: -2, y: 9, z: 0}
     - {x: -1, y: 10, z: 0}
-    centerWorld: {x: 6.321429, y: -0.6804101, z: 0}
+    centerWorld: {x: 5.7954545, y: -0.6691637, z: 0}
     edges:
     - toSectorId: 4
       weight: 1
@@ -318,7 +306,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 8
-    displayColor: {r: 0.015686262, g: 0.84313726, b: 0.09460011, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: 1, y: 7, z: 0}
     - {x: 1, y: 8, z: 0}
@@ -342,10 +330,6 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyId: 
-    - toSectorId: 5
-      weight: 1
-      locked: 0
-      requiredKeyId: 
     - toSectorId: 6
       weight: 1
       locked: 0
@@ -363,7 +347,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 9
-    displayColor: {r: 0.8415094, g: 0.017465271, b: 0.017465271, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: 3, y: 9, z: 0}
     - {x: 4, y: 9, z: 0}
@@ -403,7 +387,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 10
-    displayColor: {r: 0.84313726, g: 0.72726464, b: 0.015686262, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: -1, y: 12, z: 0}
     - {x: -1, y: 13, z: 0}
@@ -441,7 +425,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 11
-    displayColor: {r: 0.09958705, g: 0.2502542, b: 0.7433963, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: 5, y: 14, z: 0}
     - {x: 5, y: 15, z: 0}
@@ -477,7 +461,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyId: 
   - id: 12
-    displayColor: {r: 0.8415094, g: 0.40052754, b: 0.08097541, a: 1}
+    displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
     - {x: -2, y: 16, z: 0}
     - {x: -1, y: 16, z: 0}
