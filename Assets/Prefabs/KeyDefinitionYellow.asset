@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af48a16b99f10e144941ad8b9e5a439f, type: 3}
   m_Name: KeyDefinitionYellow
   m_EditorClassIdentifier: 
-  KeyType: 2
+  KeyType: 3
   DisplayName: 'Yellow Key '
   Color: {r: 0.89433956, g: 0.79339486, b: 0.32904935, a: 1}

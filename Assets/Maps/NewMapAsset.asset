@@ -35,16 +35,16 @@ MonoBehaviour:
     edges:
     - toSectorId: 2
       weight: 1
-      locked: 0
-      requiredKeyId: 
+      locked: 1
+      requiredKeyType: 2
     - toSectorId: 1
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 3
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 1
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -70,15 +70,19 @@ MonoBehaviour:
     - toSectorId: 0
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 2
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 5
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 7
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
   - id: 2
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -97,24 +101,24 @@ MonoBehaviour:
     edges:
     - toSectorId: 0
       weight: 1
-      locked: 0
-      requiredKeyId: 
+      locked: 1
+      requiredKeyType: 2
     - toSectorId: 1
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 3
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 5
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 4
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 3
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -127,11 +131,15 @@ MonoBehaviour:
     - toSectorId: 0
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 2
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 4
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
   - id: 4
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -165,19 +173,27 @@ MonoBehaviour:
     - toSectorId: 2
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 3
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 5
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 6
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 8
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 9
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
   - id: 5
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -203,19 +219,23 @@ MonoBehaviour:
     - toSectorId: 1
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 2
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 4
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 6
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 7
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 6
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -237,15 +257,19 @@ MonoBehaviour:
     - toSectorId: 4
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 5
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 8
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 7
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 7
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -278,14 +302,26 @@ MonoBehaviour:
     - {x: -2, y: 12, z: 0}
     centerWorld: {x: 6.8333335, y: -3.5921996, z: 0}
     edges:
+    - toSectorId: 1
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 5
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 6
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 8
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 10
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
   - id: 8
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -314,19 +350,23 @@ MonoBehaviour:
     - toSectorId: 4
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 6
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
+    - toSectorId: 7
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 9
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 10
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 9
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -351,18 +391,22 @@ MonoBehaviour:
     - {x: 4, y: 14, z: 0}
     centerWorld: {x: 8.723684, y: 3.3043842, z: 0}
     edges:
+    - toSectorId: 4
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 8
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 11
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 10
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 10
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -378,22 +422,26 @@ MonoBehaviour:
     - {x: 0, y: 16, z: 0}
     centerWorld: {x: 10.725, y: -0.6494824, z: 0}
     edges:
+    - toSectorId: 7
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 8
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 9
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 12
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 11
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 11
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -421,15 +469,15 @@ MonoBehaviour:
     - toSectorId: 9
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 10
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 12
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   - id: 12
     displayColor: {r: 0, g: 0, b: 0, a: 0}
     cells:
@@ -451,11 +499,21 @@ MonoBehaviour:
     - toSectorId: 10
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
     - toSectorId: 11
       weight: 1
       locked: 0
-      requiredKeyId: 
+      requiredKeyType: 0
   keys:
   - sectorId: 1
+    type: 1
+  - sectorId: 3
+    type: 1
+  - sectorId: 4
+    type: 1
+  - sectorId: 1
+    type: 1
+  - sectorId: 3
+    type: 1
+  - sectorId: 4
     type: 1

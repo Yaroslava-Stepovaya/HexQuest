@@ -162,7 +162,7 @@ public class SectorEdgesView : MonoBehaviour
                 lr.material = mat;              // общий материал
 
                 // Цвет линии (по состоянию locked / normal)
-                var col = locked ? lockedColor : edgeColor;
+                var col = e.RequiredKeyType != KeyType.None ? mapManager.KeyDatabase.Get(e.RequiredKeyType).Color : edgeColor;
                 lr.startColor = lr.endColor = col;
 
                 // Толщина (немного зависит от веса)

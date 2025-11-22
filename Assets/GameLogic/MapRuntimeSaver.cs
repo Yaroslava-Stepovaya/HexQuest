@@ -41,7 +41,7 @@ public static class MapRuntimeSaver
                         toSectorId = e.To,
                         weight = e.Weight,
                         locked = e.Locked,
-                        requiredKeyId = e.RequiredKeyId
+                        requiredKeyType = e.RequiredKeyType
                     });
                 }
             }

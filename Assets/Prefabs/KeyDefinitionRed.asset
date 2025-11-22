@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af48a16b99f10e144941ad8b9e5a439f, type: 3}
   m_Name: KeyDefinitionRed
   m_EditorClassIdentifier: 
-  KeyType: 0
+  KeyType: 1
   DisplayName: Red Key
   Color: {r: 0.82641506, g: 0.11070844, b: 0.19327493, a: 1}

@@ -14,7 +14,7 @@ public class MapManager : MonoBehaviour
     public Tilemap sourceTilemap;            // tilemap with map 
 
     [SerializeField] private UnitView heroViewPrefab; // префаб UnitView (с двумя SpriteRenderer)
-    [SerializeField] private KeyDatabase keyDatabase;
+    [SerializeField] private KeyDatabase _keyDatabase;
     [SerializeField] public KeyView keyViewPrefab;
 
     [Header("State")]
@@ -26,6 +26,8 @@ public class MapManager : MonoBehaviour
     // runtime structures
     private List<Sector> _sectors = new();
     private Dictionary<Vector3Int, int> _cellToSector = new();
+
+    public KeyDatabase KeyDatabase => _keyDatabase;
 
 
     public IReadOnlyList<Sector> Sectors => _sectors;
@@ -63,7 +65,7 @@ public class MapManager : MonoBehaviour
             var s = new Sector(sd.id, new List<Vector3Int>(sd.cells), sd.centerWorld);
             // recreate edges
             foreach (var e in sd.edges)
-                s.AddOrUpdateEdge(e.toSectorId, e.weight, e.locked, e.requiredKeyId);
+                s.AddOrUpdateEdge(e.toSectorId, e.weight, e.locked, e.requiredKeyType);
 
             _sectors.Add(s);
         }
@@ -79,6 +81,10 @@ public class MapManager : MonoBehaviour
         {
             CreateKey(kd.sectorId, kd.type);
         }
+
+        _sectors[0].AddOrUpdateEdge(2, 1, true, KeyType.Blue);
+        _sectors[2].AddOrUpdateEdge(0, 1, true, KeyType.Blue);
+
     }
 
     public void CreateKey(int sectorId, KeyType keyType)
@@ -86,7 +92,7 @@ public class MapManager : MonoBehaviour
         var keyData = new MapKeyData(sectorId, keyType);
         Sector sector = GetSectorByID(sectorId);
         var keyView = Instantiate(keyViewPrefab, sector.CenterWorld, Quaternion.identity);
-        keyView.Init(keyData, keyDatabase.Get(keyType), sector.CenterWorld);
+        keyView.Init(keyData, _keyDatabase.Get(keyType), sector.CenterWorld);
 
         KeysOnMap.Add(keyData);
     }

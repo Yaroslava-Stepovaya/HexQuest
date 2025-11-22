@@ -18,5 +18,5 @@ public class EdgeData
     public int toSectorId;
     public float weight = 1f;                  // sector transition weight (initially equals 1)
     public bool locked = false;                // check if sector is locked
-    public string requiredKeyId;               // key ID
+    public KeyType requiredKeyType;               // key ID
 }

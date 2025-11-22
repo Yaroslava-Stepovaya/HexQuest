@@ -26,9 +26,9 @@ public sealed class Sector
         CenterWorld = centerWorld;  //sector's centroid
     }
     //adds new edge or updates another sector's edge adn 
-    public void AddOrUpdateEdge(int toSectorId, float weight = 1f, bool locked = false, string requiredKeyId = null)
+    public void AddOrUpdateEdge(int toSectorId, float weight = 1f, bool locked = false, KeyType requiredKeyType = KeyType.None)
     {
-        _edges[toSectorId] = new SectorEdge(Id, toSectorId, weight, locked, requiredKeyId);
+        _edges[toSectorId] = new SectorEdge(Id, toSectorId, weight, locked, requiredKeyType);
     }
 
     public void RemoveEdge(int toSectorId)
@@ -65,17 +65,17 @@ public class SectorEdge
     //check if you can enter the sector
     public bool Locked { get; private set; }
     //check if key is needed to enter the sector
-    public string RequiredKeyId { get; private set; }
+    public KeyType RequiredKeyType { get; private set; }
 
 
     //edge constructor
-    public SectorEdge(int from, int to, float weight, bool locked, string requiredKeyId)
+    public SectorEdge(int from, int to, float weight, bool locked, KeyType requiredKeyType)
     {
-        From = from; To = to; Weight = weight; Locked = locked; RequiredKeyId = requiredKeyId;
+        From = from; To = to; Weight = weight; Locked = locked; RequiredKeyType = requiredKeyType;
     }
 
     //set edge's status and key required
-    public void SetLock(bool locked, string requiredKeyId = null) { Locked = locked; RequiredKeyId = requiredKeyId; }
+    //public void SetLock(bool locked, string requiredKeyId = null) { Locked = locked; RequiredKeyId = requiredKeyId; }
     //edge's weight
     public void SetWeight(float weight) { Weight = weight; }
 }
