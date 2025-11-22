@@ -10,9 +10,9 @@ public static class MapRuntimeSaver
     /// <summary>
     /// Перезаписывает содержимое mapAsset текущими рантайм-секторами.
     /// </summary>
-    public static void SaveRuntimeToAsset(MapAsset mapAsset, IReadOnlyList<Sector> runtimeSectors)
+    public static void SaveRuntimeToAsset(MapAsset mapAsset, GameManager gameManager)
     {
-        if (mapAsset == null || runtimeSectors == null)
+        if (mapAsset == null || gameManager.MapManager.Sectors == null)
         {
             Debug.LogError("SaveRuntimeToAsset: mapAsset/runtimeSectors is null.");
             return;
@@ -20,7 +20,7 @@ public static class MapRuntimeSaver
 
         mapAsset.sectors.Clear();
 
-        foreach (var s in runtimeSectors)
+        foreach (var s in gameManager.MapManager.Sectors)
         {
             // Собираем SectorData
             var sd = new SectorData
@@ -47,6 +47,19 @@ public static class MapRuntimeSaver
             }
 
             mapAsset.sectors.Add(sd);
+        }
+
+        //saves keys' data
+
+        foreach (var key in gameManager.MapManager.KeysOnMap)
+        {
+            var kd = new KeyData
+            {
+                sectorId = key.SectorId,
+                type = key.KeyType
+            };
+
+            mapAsset.keys.Add(kd);
         }
 
         // Сохраняем asset в редакторе

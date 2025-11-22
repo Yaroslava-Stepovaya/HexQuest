@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af48a16b99f10e144941ad8b9e5a439f, type: 3}
+  m_Name: KeyDefinitionYellow
+  m_EditorClassIdentifier: 
+  KeyType: 2
+  DisplayName: 'Yellow Key '
+  Color: {r: 0.89433956, g: 0.79339486, b: 0.32904935, a: 1}

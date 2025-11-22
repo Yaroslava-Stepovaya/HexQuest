@@ -39,12 +39,20 @@ public class MapControlHandler : MonoBehaviour
     }
 
     private void Update()
+
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (!TryGetSectorUnderCursor(out var sector)) return;
+
+            _gameManager.MapManager.CreateKey(sector.Id, KeyType.Blue);
+        }
+
         if (Input.GetKeyDown(_toggleEditKey))
             SetMode(_mode == Mode.Gameplay ? Mode.EditEdges : Mode.Gameplay);
 
         if (Input.GetKeyDown(_saveMapKey))
-            MapRuntimeSaver.SaveRuntimeToAsset(_mapManager.mapAsset, _mapManager.Sectors);
+            MapRuntimeSaver.SaveRuntimeToAsset(_mapManager.mapAsset, _gameManager);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -135,10 +143,11 @@ public class MapControlHandler : MonoBehaviour
     private void OnGUI()
     {
         if (_mode != Mode.EditEdges) return;
-        GUILayout.BeginArea(new Rect(10, 10, 360, 70), GUI.skin.box);
+        GUILayout.BeginArea(new Rect(10, 10, 360, 110), GUI.skin.box);
         GUILayout.Label("<b>Edge Edit Mode</b> (E to toggle)", Rich());
         GUILayout.Label($"Selected A: {(_selected >= 0 ? _selected.ToString() : "—")}");
         GUILayout.Label("LMB: pick/toggle, Esc: clear");
+        GUILayout.Label("S: save changes");
         GUILayout.EndArea();
     }
     private static GUIStyle Rich() { var s = new GUIStyle(GUI.skin.label) { richText = true }; return s; }

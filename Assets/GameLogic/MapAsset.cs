@@ -6,4 +6,5 @@ using UnityEngine;
 public class MapAsset : ScriptableObject
 {
     public List<SectorData> sectors = new();
+    public List<KeyData> keys = new();
 }

@@ -13,6 +13,16 @@ public class MapManager : MonoBehaviour
     public MapAsset mapAsset;                // scriptableObject with map data
     public Tilemap sourceTilemap;            // tilemap with map 
 
+    [SerializeField] private UnitView heroViewPrefab; // префаб UnitView (с двумя SpriteRenderer)
+    [SerializeField] private KeyDatabase keyDatabase;
+    [SerializeField] public KeyView keyViewPrefab;
+
+    [Header("State")]
+    //public List<Unit> units = new();                 // логические юниты
+    public List<MapKeyData> KeysOnMap = new List<MapKeyData>();
+    //public List<UnitView> unitViews = new();         // их визуалы
+
+
     // runtime structures
     private List<Sector> _sectors = new();
     private Dictionary<Vector3Int, int> _cellToSector = new();
@@ -64,9 +74,22 @@ public class MapManager : MonoBehaviour
                 _cellToSector[c] = s.Id;
 
         Pathfinder = new SectorGraphPathfinder(_sectors);
+
+        foreach(var kd in mapAsset.keys)
+        {
+            CreateKey(kd.sectorId, kd.type);
+        }
     }
 
+    public void CreateKey(int sectorId, KeyType keyType)
+    {
+        var keyData = new MapKeyData(sectorId, keyType);
+        Sector sector = GetSectorByID(sectorId);
+        var keyView = Instantiate(keyViewPrefab, sector.CenterWorld, Quaternion.identity);
+        keyView.Init(keyData, keyDatabase.Get(keyType), sector.CenterWorld);
 
+        KeysOnMap.Add(keyData);
+    }
 
     // trying to get sector by tilemap's ID
     public bool TryGetSectorByCell(Vector3Int cell, out Sector sector)

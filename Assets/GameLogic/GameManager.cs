@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Refs")]
+    [Header("Data")]
     [SerializeField] private MapManager mapManager;   // брось сюда из сцены
     [SerializeField] private UnitView heroViewPrefab; // префаб UnitView (с двумя SpriteRenderer)
+    [SerializeField] private KeyDatabase keyDatabase;
+    [SerializeField] public KeyView keyViewPrefab;
 
     [Header("State")]
     public List<Unit> units = new();                 // логические юниты
+    
     public List<UnitView> unitViews = new();         // их визуалы
 
     public MapManager MapManager => mapManager; 
     private HeroUnit hero;
     private UnitView heroView;
+    public KeyDatabase KeyDatabase => keyDatabase;
 
     private void Start()
     {
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
 //        view.GetComponent<UnitView>().MoveAlongPath(path);
     }
 
+   
     public void HandleSectorClick(int targetSectorId)
     {
         if (hero == null) return;
