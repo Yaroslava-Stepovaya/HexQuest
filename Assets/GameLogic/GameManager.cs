@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -62,6 +63,9 @@ public class GameManager : MonoBehaviour
         heroView.Bind(hero, snapToSector: true);
         unitViews.Add(heroView);
 
+
+        GameEvents.ArrivedAtSector += OnHeroArrivedAtSector;
+
 //        List<Sector> path = new List<Sector>();
 
 //        foreach (var sec in mapManager.Sectors)
@@ -100,5 +104,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private void OnHeroArrivedAtSector(Unit hero, int sectorID)
+    {
+        Debug.Log("Hero has arrived at sector " + sectorID);
+
+        var keys = mapManager.KeysOnMap.Where(x => x.SectorId == sectorID).ToList();
+        foreach (var key in keys)
+        {
+            Debug.Log(key.KeyType.ToString() + " ");
+            UnlockEdgesByKey(key.KeyType);
+            GameEvents.SwitchKey?.Invoke(key);
+        }
+    }
+
+    private void UnlockEdgesByKey(KeyType keyType)
+    {
+
+        foreach (var sector in mapManager.Sectors)
+        {
+
+            var edges = sector.Edges
+                .Where(e => e.Value.RequiredKeyType == keyType)
+                .Select(e => e.Value)
+                .ToList();
+
+
+            foreach (var edge in edges)
+                sector.AddOrUpdateEdge(edge.To, 1, false);
+
+
+        }
+
+        
+        GameEvents.RebuildEdges?.Invoke();
+    }
+
 }

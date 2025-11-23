@@ -19,6 +19,8 @@ public sealed class Sector
 
     public IEnumerable<int> Neighbors => _edges.Keys;   //ID of neighbour sectors
 
+    public IReadOnlyDictionary<int, SectorEdge> Edges => _edges;
+
     public Sector(int id, List<Vector3Int> cells, Vector3 centerWorld)
     {
         Id = id;                    //sector's ID

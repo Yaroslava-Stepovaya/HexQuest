@@ -1,25 +1,26 @@
+
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public class UnitView : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject unitMediaObject;
+    [SerializeField] private GameObject unitMediaObject;
+    [SerializeField] private float minStepDuration = 0.15f;
+    [SerializeField] private float maxStepDuration = 1.5f;
+    [SerializeField] private Ease ease = Ease.Linear;
 
     public Unit BoundUnit { get; private set; }
 
     private Sequence moveSeq;
 
-    [SerializeField] private float minStepDuration = 0.15f; // нижний предел длительности шага
-    [SerializeField] private float maxStepDuration = 1.5f;  // верхний предел длительности шага
-    [SerializeField] private Ease ease = Ease.Linear;
-
     public void Bind(Unit unit, bool snapToSector = true)
     {
         BoundUnit = unit;
-        //if (snapToSector && unit?.CurrentSector != null)
-           // SnapToCurrentSector();
+
+        if (snapToSector && unit?.CurrentSector != null)
+            SnapToCurrentSector();
     }
 
     public void SnapToCurrentSector()
@@ -28,6 +29,10 @@ public class UnitView : MonoBehaviour
         transform.position = BoundUnit.CurrentSector.CenterWorld;
     }
 
+    /// <summary>
+    /// Пошаговое перемещение по списку секторов (центроидам).
+    /// Длительность шага = дистанция / BoundUnit.MoveSpeed, зажимаем min/max.
+    /// </summary>
     public void MoveAlongPath(IList<Sector> path)
     {
         if (BoundUnit == null || path == null || path.Count == 0) return;
@@ -48,18 +53,27 @@ public class UnitView : MonoBehaviour
             float speed = Mathf.Max(0.0001f, BoundUnit.MoveSpeed);
             float dur = Mathf.Clamp(dist / speed, minStepDuration, maxStepDuration);
 
+            // локальная копия для замыкания
+            Sector stepSector = s;
 
-            BoundUnit.CurrentSector = path[i];//temporary
-            moveSeq.Append(transform.DOMove(to, dur).SetEase(ease));
+            moveSeq
+                .Append(transform.DOMove(to, dur).SetEase(ease))
+                .AppendCallback(() =>
+                {
+                    // обновляем модель
+                    BoundUnit.CurrentSector = stepSector;
+
+                    // шлём ивент
+                    GameEvents.ArrivedAtSector?.Invoke(BoundUnit, stepSector.Id);
+                });
+
             from = to;
         }
 
         moveSeq.OnComplete(() =>
         {
-            // По завершении пути можно уведомить внешний контроллер,
-            // либо тут же снапнуть позицию (на всякий случай)
+            // подстраховочный снап, если нужно
             SnapToCurrentSector();
         });
     }
-
 }

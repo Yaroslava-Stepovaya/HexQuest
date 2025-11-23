@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class Unit
 {
     // === Public Properties ===
@@ -6,6 +8,10 @@ public class Unit
     public Sector CurrentSector { get; set; } // сектор, где юнит сейчас
     public float MoveSpeed { get; set; }   // скорость движения
     public bool IsAlive { get; private set; } = true; // жив ли юнит
+
+    
+
+    
 
     // === Private Fields ===
     private bool isMoving;   // внутренний флаг движения
@@ -45,6 +51,9 @@ public class Unit
     // === Protected / Virtual Methods (для наследников) ===
     //protected virtual void OnArrived(Sector sector)
     //{
-        // TODO: событие по прибытии
+    // TODO: событие по прибытии
     //}
+
+    
+    
 }

@@ -19,5 +19,17 @@ public class KeyView : MonoBehaviour
 
         if (spriteRenderer != null && def != null)
             spriteRenderer.color = def.Color;
+
+        GameEvents.SwitchKey += SwitchKey;
+
+    }
+
+    public void SwitchKey(MapKeyData data)
+    {
+        if (data != Data)
+        {
+            return;
+        }
+        spriteRenderer.flipX = true;
     }
 }

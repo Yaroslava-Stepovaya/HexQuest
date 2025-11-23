@@ -505,15 +505,5 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
   keys:
-  - sectorId: 1
-    type: 1
-  - sectorId: 3
-    type: 1
   - sectorId: 4
-    type: 1
-  - sectorId: 1
-    type: 1
-  - sectorId: 3
-    type: 1
-  - sectorId: 4
-    type: 1
+    type: 2

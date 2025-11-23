@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 87c84b16b5e8f7b4d8a066acdf4e9585
+guid: 9a9a68e3dc20352429b91eb5e7e3a598
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8508264561639246492
-    second: WhiteKeyIcononTransparentBackground_0
+      213: -3975624549204834352
+    second: lever_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WhiteKeyIcononTransparentBackground_0
+      name: lever_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 7
-        width: 112
-        height: 112
+        x: 159
+        y: 57
+        width: 726
+        height: 888
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9a4d834a8d631670800000000000000
-      internalID: 8508264561639246492
+      spriteID: 0d7c258498eb3d8c0800000000000000
+      internalID: -3975624549204834352
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 43bba2df5588cb442ae1d09e946835cb
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WhiteKeyIcononTransparentBackground_0: 8508264561639246492
+      lever_0: -3975624549204834352
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
