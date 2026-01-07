@@ -164,5 +164,14 @@ public class MapManager : MonoBehaviour
             GameEvents.RebuildEdges?.Invoke();
     }
 
+    public void ChangeEdgeLock(int a, int b, KeyType keyType = KeyType.None)
+    {
+        bool edgeLock = keyType != KeyType.None;
+
+        GetSectorByID(a).AddOrUpdateEdge(b,1,edgeLock,keyType);
+        GetSectorByID(b).AddOrUpdateEdge(a, 1, edgeLock, keyType);
+
+        GameEvents.RebuildEdges?.Invoke();
+    }
     
 }
