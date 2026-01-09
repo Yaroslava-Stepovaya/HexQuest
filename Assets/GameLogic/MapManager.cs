@@ -16,10 +16,13 @@ public class MapManager : MonoBehaviour
     [SerializeField] private UnitView heroViewPrefab; // префаб UnitView (с двумя SpriteRenderer)
     [SerializeField] private KeyDatabase _keyDatabase;
     [SerializeField] public KeyView keyViewPrefab;
+    [SerializeField] public UnitView enemyViewPrefab;
+
 
     [Header("State")]
     //public List<Unit> units = new();                 // логические юниты
     public List<MapKeyData> KeysOnMap = new List<MapKeyData>();
+    public List<Unit> EnemiesOnMap = new List<Unit>();
     //public List<UnitView> unitViews = new();         // их визуалы
 
 
@@ -82,7 +85,14 @@ public class MapManager : MonoBehaviour
             CreateKey(kd.sectorId, kd.type);
         }
 
-        _sectors[0].AddOrUpdateEdge(2, 1, true, KeyType.Blue);
+        int idCounter = 2;
+        foreach (var enemy in mapAsset.enemies)
+        {
+            CreateEnemy(enemy.sectorId, enemy.type, idCounter);
+            idCounter++;
+        }
+
+            _sectors[0].AddOrUpdateEdge(2, 1, true, KeyType.Blue);
         _sectors[2].AddOrUpdateEdge(0, 1, true, KeyType.Blue);
 
     }
@@ -95,6 +105,18 @@ public class MapManager : MonoBehaviour
         keyView.Init(keyData, _keyDatabase.Get(keyType), sector.CenterWorld);
 
         KeysOnMap.Add(keyData);
+    }
+
+    public void CreateEnemy(int sectorId, EnemyType enemyType, int id)
+    {
+        
+        Sector sector = GetSectorByID(sectorId);
+        var enemyData = new Unit(id, enemyType.ToString(), sector, 1);
+        var enemyView = Instantiate(enemyViewPrefab, sector.CenterWorld, Quaternion.identity);
+        enemyView.Bind(enemyData);
+        //enemyView.Init(keyData, _keyDatabase.Get(keyType), sector.CenterWorld);
+
+        EnemiesOnMap.Add(enemyData);
     }
 
     // trying to get sector by tilemap's ID
