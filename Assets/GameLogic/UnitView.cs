@@ -23,6 +23,38 @@ public class UnitView : MonoBehaviour
             SnapToCurrentSector();
     }
 
+    public bool IsMoving => moveSeq != null && moveSeq.IsActive() && moveSeq.IsPlaying();
+
+    public void MoveOneStepTo(Sector targetSector, Vector3 targetWorldPos)
+    {
+        if (BoundUnit == null || targetSector == null) return;
+
+        // убить предыдущую анимацию, если была
+        moveSeq?.Kill();
+        moveSeq = DOTween.Sequence();
+
+        Vector3 from = transform.position;
+        Vector3 to = targetWorldPos;
+
+        float dist = Vector3.Distance(from, to);
+        float speed = Mathf.Max(0.0001f, BoundUnit.MoveSpeed);
+        float dur = Mathf.Clamp(dist / speed, minStepDuration, maxStepDuration);
+
+        Sector stepSector = targetSector;
+
+        moveSeq
+            .Append(transform.DOMove(to, dur).SetEase(ease))
+            .AppendCallback(() =>
+            {
+                BoundUnit.CurrentSector = stepSector;
+                GameEvents.ArrivedAtSector?.Invoke(BoundUnit, stepSector.Id);
+            })
+            .OnComplete(() =>
+            {
+                // без снапа в центр!
+                // (можно сделать SnapToAssignedSlot позже, если захочешь)
+            });
+    }
     public void SnapToCurrentSector()
     {
         if (BoundUnit?.CurrentSector == null) return;

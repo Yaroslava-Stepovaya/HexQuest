@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectors:
   - id: 0
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.86415094, g: 0.40272692, b: 0.80531824, a: 1}
     cells:
     - {x: -1, y: -4, z: 0}
     - {x: 0, y: -4, z: 0}
@@ -27,60 +27,53 @@ MonoBehaviour:
     - {x: -3, y: -3, z: 0}
     - {x: 0, y: -2, z: 0}
     - {x: 1, y: -2, z: 0}
+    - {x: -2, y: -1, z: 0}
     - {x: -3, y: -2, z: 0}
-    - {x: 2, y: -2, z: 0}
     - {x: -3, y: -1, z: 0}
     - {x: -4, y: -1, z: 0}
-    centerWorld: {x: -1.85, y: -0.72164714, z: 0}
+    centerWorld: {x: -1.8, y: -0.9237083, z: 0}
     edges:
+    - toSectorId: 2
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 1
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 3
       weight: 1
       locked: 0
       requiredKeyType: 0
-    - toSectorId: 2
-      weight: 1
-      locked: 1
-      requiredKeyType: 2
-    - toSectorId: 1
-      weight: 1
-      locked: 1
-      requiredKeyType: 1
   - id: 1
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.09958705, g: 0.2502542, b: 0.7433963, a: 1}
     cells:
-    - {x: -2, y: -1, z: 0}
-    - {x: -2, y: 0, z: 0}
-    - {x: -3, y: 0, z: 0}
-    - {x: -2, y: 1, z: 0}
-    - {x: -4, y: 0, z: 0}
-    - {x: -3, y: 1, z: 0}
-    - {x: -4, y: 1, z: 0}
-    - {x: -2, y: 2, z: 0}
-    - {x: -3, y: 2, z: 0}
-    - {x: -4, y: 2, z: 0}
-    - {x: -5, y: 1, z: 0}
-    - {x: -4, y: 3, z: 0}
-    - {x: -5, y: 2, z: 0}
-    - {x: -5, y: 3, z: 0}
-    - {x: -4, y: 4, z: 0}
-    - {x: -5, y: 4, z: 0}
-    - {x: -5, y: 5, z: 0}
-    centerWorld: {x: 1.3235294, y: -2.954508, z: 0}
+    - {x: 2, y: -2, z: 0}
+    - {x: 3, y: -2, z: 0}
+    - {x: 2, y: -1, z: 0}
+    - {x: 3, y: -1, z: 0}
+    - {x: 1, y: -1, z: 0}
+    - {x: 2, y: 0, z: 0}
+    - {x: 3, y: 0, z: 0}
+    - {x: 2, y: 1, z: 0}
+    - {x: 3, y: 1, z: 0}
+    - {x: 4, y: 0, z: 0}
+    centerWorld: {x: -0.375, y: 2.3814354, z: 0}
     edges:
-    - toSectorId: 2
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
-    - toSectorId: 7
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
     - toSectorId: 0
       weight: 1
-      locked: 1
-      requiredKeyType: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 2
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 5
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
   - id: 2
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.56807745, g: 0.09772151, b: 0.690566, a: 1}
     cells:
     - {x: -1, y: -1, z: 0}
     - {x: 0, y: -1, z: 0}
@@ -90,11 +83,14 @@ MonoBehaviour:
     - {x: -1, y: 1, z: 0}
     - {x: 0, y: 1, z: 0}
     - {x: 1, y: 1, z: 0}
-    - {x: 2, y: 0, z: 0}
     - {x: 1, y: 2, z: 0}
     - {x: 2, y: 2, z: 0}
-    centerWorld: {x: 0.3409091, y: 0.51171345, z: 0}
+    centerWorld: {x: 0.375, y: 0.38968945, z: 0}
     edges:
+    - toSectorId: 0
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 1
       weight: 1
       locked: 0
@@ -103,26 +99,34 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyType: 0
-    - toSectorId: 5
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
     - toSectorId: 4
       weight: 1
       locked: 0
       requiredKeyType: 0
-    - toSectorId: 0
+    - toSectorId: 5
       weight: 1
-      locked: 1
-      requiredKeyType: 2
+      locked: 0
+      requiredKeyType: 0
   - id: 3
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.09958705, g: 0.2502542, b: 0.7433963, a: 1}
     cells:
-    - {x: 1, y: -1, z: 0}
-    - {x: 2, y: -1, z: 0}
-    - {x: 3, y: 0, z: 0}
-    - {x: 2, y: 1, z: 0}
-    centerWorld: {x: -0.1875, y: 2.0566945, z: 0}
+    - {x: -4, y: 0, z: 0}
+    - {x: -3, y: 0, z: 0}
+    - {x: -4, y: 1, z: 0}
+    - {x: -3, y: 1, z: 0}
+    - {x: -2, y: 0, z: 0}
+    - {x: -5, y: 1, z: 0}
+    - {x: -4, y: 2, z: 0}
+    - {x: -3, y: 2, z: 0}
+    - {x: -2, y: 1, z: 0}
+    - {x: -5, y: 2, z: 0}
+    - {x: -4, y: 3, z: 0}
+    - {x: -2, y: 2, z: 0}
+    - {x: -5, y: 3, z: 0}
+    - {x: -4, y: 4, z: 0}
+    - {x: -5, y: 4, z: 0}
+    - {x: -5, y: 5, z: 0}
+    centerWorld: {x: 1.453125, y: -3.0579796, z: 0}
     edges:
     - toSectorId: 0
       weight: 1
@@ -133,65 +137,15 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
     - toSectorId: 4
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 7
       weight: 1
       locked: 0
       requiredKeyType: 0
   - id: 4
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
-    cells:
-    - {x: 3, y: 1, z: 0}
-    - {x: 3, y: 2, z: 0}
-    - {x: 4, y: 2, z: 0}
-    - {x: 3, y: 3, z: 0}
-    - {x: 2, y: 3, z: 0}
-    - {x: 4, y: 3, z: 0}
-    - {x: 3, y: 4, z: 0}
-    - {x: 2, y: 4, z: 0}
-    - {x: 1, y: 3, z: 0}
-    - {x: 4, y: 4, z: 0}
-    - {x: 5, y: 4, z: 0}
-    - {x: 3, y: 5, z: 0}
-    - {x: 2, y: 5, z: 0}
-    - {x: 4, y: 5, z: 0}
-    - {x: 5, y: 5, z: 0}
-    - {x: 3, y: 6, z: 0}
-    - {x: 2, y: 6, z: 0}
-    - {x: 1, y: 5, z: 0}
-    - {x: 4, y: 6, z: 0}
-    - {x: 5, y: 6, z: 0}
-    - {x: 3, y: 7, z: 0}
-    - {x: 2, y: 7, z: 0}
-    - {x: 4, y: 7, z: 0}
-    - {x: 3, y: 8, z: 0}
-    - {x: 4, y: 8, z: 0}
-    centerWorld: {x: 3.57, y: 2.9616401, z: 0}
-    edges:
-    - toSectorId: 2
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
-    - toSectorId: 3
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
-    - toSectorId: 5
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
-    - toSectorId: 6
-      weight: 1
-      locked: 1
-      requiredKeyType: 3
-    - toSectorId: 8
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
-    - toSectorId: 9
-      weight: 1
-      locked: 0
-      requiredKeyType: 0
-  - id: 5
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.8415094, g: 0.017465271, b: 0.017465271, a: 1}
     cells:
     - {x: -1, y: 2, z: 0}
     - {x: 0, y: 2, z: 0}
@@ -216,7 +170,11 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyType: 0
-    - toSectorId: 4
+    - toSectorId: 3
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 5
       weight: 1
       locked: 0
       requiredKeyType: 0
@@ -228,8 +186,61 @@ MonoBehaviour:
       weight: 1
       locked: 0
       requiredKeyType: 0
+  - id: 5
+    displayColor: {r: 0.015686262, g: 0.5592802, b: 0.84313726, a: 1}
+    cells:
+    - {x: 3, y: 2, z: 0}
+    - {x: 4, y: 2, z: 0}
+    - {x: 3, y: 3, z: 0}
+    - {x: 2, y: 3, z: 0}
+    - {x: 4, y: 3, z: 0}
+    - {x: 3, y: 4, z: 0}
+    - {x: 2, y: 4, z: 0}
+    - {x: 1, y: 3, z: 0}
+    - {x: 4, y: 4, z: 0}
+    - {x: 5, y: 4, z: 0}
+    - {x: 3, y: 5, z: 0}
+    - {x: 2, y: 5, z: 0}
+    - {x: 4, y: 5, z: 0}
+    - {x: 5, y: 5, z: 0}
+    - {x: 3, y: 6, z: 0}
+    - {x: 2, y: 6, z: 0}
+    - {x: 1, y: 5, z: 0}
+    - {x: 4, y: 6, z: 0}
+    - {x: 5, y: 6, z: 0}
+    - {x: 3, y: 7, z: 0}
+    - {x: 2, y: 7, z: 0}
+    - {x: 4, y: 7, z: 0}
+    - {x: 3, y: 8, z: 0}
+    - {x: 4, y: 8, z: 0}
+    centerWorld: {x: 3.6875, y: 2.9587533, z: 0}
+    edges:
+    - toSectorId: 1
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 2
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 4
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 6
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 8
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
+    - toSectorId: 9
+      weight: 1
+      locked: 0
+      requiredKeyType: 0
   - id: 6
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.86415094, g: 0.40272692, b: 0.80531824, a: 1}
     cells:
     - {x: -1, y: 5, z: 0}
     - {x: 0, y: 5, z: 0}
@@ -248,8 +259,8 @@ MonoBehaviour:
     edges:
     - toSectorId: 4
       weight: 1
-      locked: 1
-      requiredKeyType: 3
+      locked: 0
+      requiredKeyType: 0
     - toSectorId: 5
       weight: 1
       locked: 0
@@ -263,7 +274,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
   - id: 7
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.56807745, g: 0.09772151, b: 0.690566, a: 1}
     cells:
     - {x: -5, y: 6, z: 0}
     - {x: -4, y: 6, z: 0}
@@ -294,11 +305,11 @@ MonoBehaviour:
     - {x: -2, y: 12, z: 0}
     centerWorld: {x: 6.8333335, y: -3.5921996, z: 0}
     edges:
-    - toSectorId: 1
+    - toSectorId: 3
       weight: 1
       locked: 0
       requiredKeyType: 0
-    - toSectorId: 5
+    - toSectorId: 4
       weight: 1
       locked: 0
       requiredKeyType: 0
@@ -315,7 +326,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
   - id: 8
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.015686262, g: 0.84313726, b: 0.09460011, a: 1}
     cells:
     - {x: 1, y: 7, z: 0}
     - {x: 1, y: 8, z: 0}
@@ -336,10 +347,9 @@ MonoBehaviour:
     - {x: 2, y: 12, z: 0}
     - {x: 0, y: 13, z: 0}
     - {x: -1, y: 12, z: 0}
-    - {x: -1, y: 13, z: 0}
-    centerWorld: {x: 7.8, y: 0.7360801, z: 0}
+    centerWorld: {x: 7.6973686, y: 0.79761004, z: 0}
     edges:
-    - toSectorId: 4
+    - toSectorId: 5
       weight: 1
       locked: 0
       requiredKeyType: 0
@@ -360,7 +370,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
   - id: 9
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.8415094, g: 0.017465271, b: 0.017465271, a: 1}
     cells:
     - {x: 3, y: 9, z: 0}
     - {x: 4, y: 9, z: 0}
@@ -383,7 +393,7 @@ MonoBehaviour:
     - {x: 4, y: 14, z: 0}
     centerWorld: {x: 8.723684, y: 3.3043842, z: 0}
     edges:
-    - toSectorId: 4
+    - toSectorId: 5
       weight: 1
       locked: 0
       requiredKeyType: 0
@@ -400,10 +410,11 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
   - id: 10
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.84313726, g: 0.72726464, b: 0.015686262, a: 1}
     cells:
     - {x: -3, y: 13, z: 0}
     - {x: -2, y: 13, z: 0}
+    - {x: -1, y: 13, z: 0}
     - {x: -2, y: 14, z: 0}
     - {x: -1, y: 14, z: 0}
     - {x: -2, y: 15, z: 0}
@@ -412,7 +423,7 @@ MonoBehaviour:
     - {x: 0, y: 15, z: 0}
     - {x: 1, y: 14, z: 0}
     - {x: 0, y: 16, z: 0}
-    centerWorld: {x: 10.725, y: -0.6494824, z: 0}
+    centerWorld: {x: 10.636364, y: -0.6298012, z: 0}
     edges:
     - toSectorId: 7
       weight: 1
@@ -435,7 +446,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
   - id: 11
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.09958705, g: 0.2502542, b: 0.7433963, a: 1}
     cells:
     - {x: 5, y: 14, z: 0}
     - {x: 5, y: 15, z: 0}
@@ -471,7 +482,7 @@ MonoBehaviour:
       locked: 0
       requiredKeyType: 0
   - id: 12
-    displayColor: {r: 0, g: 0, b: 0, a: 0}
+    displayColor: {r: 0.8415094, g: 0.40052754, b: 0.08097541, a: 1}
     cells:
     - {x: -2, y: 16, z: 0}
     - {x: -1, y: 16, z: 0}
@@ -505,3 +516,14 @@ MonoBehaviour:
     type: 2
   - sectorId: 9
     type: 1
+  enemies:
+  - sectorId: 2
+    type: 0
+  - sectorId: 7
+    type: 0
+  - sectorId: 5
+    type: 0
+  - sectorId: 5
+    type: 0
+  - sectorId: 5
+    type: 0

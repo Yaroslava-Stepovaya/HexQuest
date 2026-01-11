@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UnitView heroViewPrefab; // префаб UnitView (с двумя SpriteRenderer)
     [SerializeField] private KeyDatabase keyDatabase;
     [SerializeField] public KeyView keyViewPrefab;
+    [SerializeField] private EnemyAgent _enemyAgent;
 
     [Header("State")]
     public List<Unit> units = new();                 // логические юниты
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     private HeroUnit hero;
     private UnitView heroView;
     public KeyDatabase KeyDatabase => keyDatabase;
+    public HeroUnit Hero => hero;
 
     private void Start()
     {
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
 
 
         GameEvents.ArrivedAtSector += OnHeroArrivedAtSector;
+        _enemyAgent.Init();
 
 //        List<Sector> path = new List<Sector>();
 

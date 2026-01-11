@@ -17,9 +17,17 @@ public sealed class Sector
     //list that contains information about sector's cells
     private readonly List<Vector3Int> _cells;
 
+    public bool ReleaseSlot(int unitId)
+    {
+        return _slotAssignments.Remove(unitId);
+    }
     public IEnumerable<int> Neighbors => _edges.Keys;   //ID of neighbour sectors
 
     public IReadOnlyDictionary<int, SectorEdge> Edges => _edges;
+
+    // unitId -> slotIndex
+    private readonly Dictionary<int, int> _slotAssignments = new();
+    public IReadOnlyDictionary<int, int> SlotAssignments => _slotAssignments;
 
     public Sector(int id, List<Vector3Int> cells, Vector3 centerWorld)
     {
@@ -46,6 +54,10 @@ public sealed class Sector
 
     public bool ContainsCell(Vector3Int cell) => _cells.Contains(cell);
 
+    public bool TryGetAssignedSlot(int unitId, out int slotIndex)
+    => _slotAssignments.TryGetValue(unitId, out slotIndex);
+
+    
 
     // if centre recalculation is needed later (for example after map redation)
     public void RecomputeCenter(Tilemap map)
@@ -55,6 +67,25 @@ public sealed class Sector
         foreach (var c in _cells) sum += map.GetCellCenterWorld(c);
         CenterWorld = sum / _cells.Count;
     }
+
+    public void AssignSlot(int unitId, int slotIndex)
+    {
+        _slotAssignments[unitId] = slotIndex;
+    }
+
+    public bool IsSlotTaken(int slotIndex)
+    {
+        foreach (var kv in _slotAssignments)
+            if (kv.Value == slotIndex) return true;
+        return false;
+    }
+    //public bool ReleaseSlot(int unitId)
+    //{
+    //    return _slotAssignments.Remove(unitId);
+    //}
+
+    public void ClearSlots() => _slotAssignments.Clear();
+
 }
 //get information about sector's edge
 public class SectorEdge
