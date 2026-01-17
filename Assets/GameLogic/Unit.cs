@@ -7,7 +7,7 @@ public class Unit
     public string Name { get; set; }       // имя
     public Sector CurrentSector { get; set; } // сектор, где юнит сейчас
     public float MoveSpeed { get; set; }   // скорость движения
-    public bool IsAlive { get; private set; } = true; // жив ли юнит
+    public bool IsAlive { get; set; } = true; // жив ли юнит
 
     
 

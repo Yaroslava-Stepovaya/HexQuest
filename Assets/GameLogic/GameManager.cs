@@ -3,6 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private KeyDatabase keyDatabase;
     [SerializeField] public KeyView keyViewPrefab;
     [SerializeField] private EnemyAgent _enemyAgent;
+
+    [Header("Combat (MVP)")]
+    [SerializeField] private int enemyContactDamage = 1;
 
     [Header("State")]
     public List<Unit> units = new();                 // логические юниты
@@ -66,7 +70,7 @@ public class GameManager : MonoBehaviour
         unitViews.Add(heroView);
 
 
-        GameEvents.ArrivedAtSector += OnHeroArrivedAtSector;
+        GameEvents.ArrivedAtSector += OnUnitArrivedAtSector;
         _enemyAgent.Init();
 
 //        List<Sector> path = new List<Sector>();
@@ -107,18 +111,85 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnHeroArrivedAtSector(Unit hero, int sectorID)
+    private void OnUnitArrivedAtSector(Unit unit, int sectorID)
     {
-        Debug.Log("Hero has arrived at sector " + sectorID);
+        if (unit == null) return;
 
-        var keys = mapManager.KeysOnMap.Where(x => x.SectorId == sectorID).ToList();
-        foreach (var key in keys)
+        // 1) ≈сли прибыл герой Ч обработка ключей (как раньше)
+        if (hero != null && unit.Id == hero.Id)
         {
-            Debug.Log(key.KeyType.ToString() + " ");
-            UnlockEdgesByKey(key.KeyType);
-            GameEvents.SwitchKey?.Invoke(key);
+            Debug.Log("hero has arrived at sector " + sectorID);
+
+            var keys = mapManager.KeysOnMap.Where(x => x.SectorId == sectorID).ToList();
+            foreach (var key in keys)
+            {
+                Debug.Log(key.KeyType + " ");
+                UnlockEdgesByKey(key.KeyType);
+                GameEvents.SwitchKey?.Invoke(key);
+            }
+
+            // MVP-коллизи€: герой вошЄл в сектор с врагом
+            TryResolveHeroEnemyCollision(sectorID, arrivedEnemy: null);
+            return;
+        }
+
+        // 2) ≈сли прибыл враг Ч провер€ем, не в секторе ли герой
+        // (на MVP определ€ем "враг" через список EnemiesOnMap)
+        if (mapManager.EnemiesOnMap != null && mapManager.EnemiesOnMap.Any(e => e != null && e.IsAlive && e.Id == unit.Id))
+        {
+            TryResolveHeroEnemyCollision(sectorID, arrivedEnemy: unit);
         }
     }
+
+
+
+    private void DestroyEnemyView(int enemyId)
+    {
+        var view = MapManager.GetUnitViewByID(enemyId);
+
+        if (view != null)
+            Destroy(view.gameObject);
+    }
+    private void TryResolveHeroEnemyCollision(int sectorID, Unit arrivedEnemy)
+    {
+        if (hero == null || !hero.IsAlive) return;
+
+        int heroSectorId = hero.CurrentSector != null ? hero.CurrentSector.Id : -1;
+        if (heroSectorId != sectorID) return; // столкновени€ нет: герой не в этом секторе
+
+        // ќпредел€ем врага:
+        // - если прибыл враг: используем его
+        // - если прибыл герой: ищем любого живого врага в секторе
+        Unit enemy = arrivedEnemy;
+
+        if (enemy == null)
+        {
+            enemy = mapManager.EnemiesOnMap
+                .FirstOrDefault(e => e != null && e.IsAlive && e.CurrentSector != null && e.CurrentSector.Id == sectorID);
+        }
+
+        if (enemy == null || !enemy.IsAlive) return;
+
+        // --- Ёффект: герой тер€ет HP ---
+        // ¬ј∆Ќќ: у теб€ Unit.TakeDamage пока TODO. “ут предполагаетс€ что в HeroUnit/Unit ты это реализовал.
+        hero.TakeDamage(enemyContactDamage);
+
+        // --- јннигил€ци€ врага ---
+        enemy.Die();            // если реализовано
+        enemy.IsAlive = false;  // страховка на MVP
+
+        // освободить слот, если используешь слоты
+        if (enemy.CurrentSector != null)
+            mapManager.ReleaseSlot(enemy.CurrentSector, enemy.Id);
+
+        // убрать визуал врага
+        DestroyEnemyView(enemy.Id);
+
+        Debug.Log($"Collision in sector {sectorID}: hero damaged, enemy {enemy.Id} annihilated");
+    }
+
+
+
 
     private void UnlockEdgesByKey(KeyType keyType)
     {

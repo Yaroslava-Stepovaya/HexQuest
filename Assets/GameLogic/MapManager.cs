@@ -168,7 +168,7 @@ public class MapManager : MonoBehaviour
     public void CreateEnemy(int sectorID, EnemyType enemyType, int id)
     {
         Sector sector = GetSectorByID(sectorID);
-        var EnemyData = new Unit(id, enemyType.ToString(), sector, 10);
+        var EnemyData = new Unit(id, enemyType.ToString(), sector, 10, 0.1f);
 
         // резервируем слот и спавним туда
         Vector3 spawnPos = ReserveSlot(sector, EnemyData.Id);
@@ -179,6 +179,14 @@ public class MapManager : MonoBehaviour
         EnemiesOnMap.Add(EnemyData);
         _unitViewsById[EnemyData.Id] = EnemyView;
 
+    }
+
+
+    public UnitView GetUnitViewByID(int id)
+    {
+        UnitView view = null;
+        _unitViewsById.TryGetValue(id, out view);
+        return view;
     }
 
     private void EnsureSlotsBuilt(Sector sector)

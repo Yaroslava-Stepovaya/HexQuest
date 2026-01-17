@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 1110957902}
   - component: {fileID: 1110957904}
   - component: {fileID: 1110957905}
+  - component: {fileID: 1110957906}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -525,6 +526,7 @@ MonoBehaviour:
   heroViewPrefab: {fileID: 6496481588644340013, guid: 076da83d971ddd043827006ee8688ef3, type: 3}
   keyDatabase: {fileID: 11400000, guid: 90d78e6f9fae20f46805afc6c10b65a3, type: 2}
   keyViewPrefab: {fileID: 3274133381096728142, guid: 14cf2b7a5db9e82409bfc794807d5ed2, type: 3}
+  _enemyAgent: {fileID: 1110957906}
   unitViews: []
 --- !u!114 &1110957905
 MonoBehaviour:
@@ -546,6 +548,21 @@ MonoBehaviour:
   _editSubMode: 0
   _selectedKeyType: 0
   _toggleLockPaintKey: 107
+--- !u!114 &1110957906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110957898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb270ca083445541b8726a1e3e848bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapManager: {fileID: 1110957900}
+  _gameManager: {fileID: 1110957904}
+  defaultVisionRange: 1
 --- !u!1 &1254212770
 GameObject:
   m_ObjectHideFlags: 0
