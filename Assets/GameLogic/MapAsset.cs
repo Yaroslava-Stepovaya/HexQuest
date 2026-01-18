@@ -9,5 +9,7 @@ public class MapAsset : ScriptableObject
     public List<KeyData> keys = new();
     public List<EnemyData> enemies = new();
 
+    public int WinSectorId = 9;
+
     
 }

@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     public KeyDatabase KeyDatabase => keyDatabase;
     public HeroUnit Hero => hero;
 
+    private bool gameOver = false;
+    private bool gameWon = false;
+    public bool GameOver => gameOver;
+    public bool GameWon => gameWon;
+
     private void Start()
     {
         // 1) Проверки
@@ -58,7 +63,7 @@ public class GameManager : MonoBehaviour
             id: 1,
             name: "Hero",
             startSector: startSector,
-            startHP: 10,
+            startHP: 5,
             moveSpeed: 4f
         );
         units.Add(hero);
@@ -130,6 +135,9 @@ public class GameManager : MonoBehaviour
 
             // MVP-коллизия: герой вошёл в сектор с врагом
             TryResolveHeroEnemyCollision(sectorID, arrivedEnemy: null);
+
+            if (sectorID == MapManager.mapAsset.WinSectorId && Hero.HP > 0)
+                TriggerVictory();
             return;
         }
 
@@ -174,6 +182,11 @@ public class GameManager : MonoBehaviour
         // ВАЖНО: у тебя Unit.TakeDamage пока TODO. Тут предполагается что в HeroUnit/Unit ты это реализовал.
         hero.TakeDamage(enemyContactDamage);
 
+        if (hero.HP == 0)
+        {
+            TriggerDefeat();
+        }
+
         // --- Аннигиляция врага ---
         enemy.Die();            // если реализовано
         enemy.IsAlive = false;  // страховка на MVP
@@ -188,7 +201,33 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Collision in sector {sectorID}: hero damaged, enemy {enemy.Id} annihilated");
     }
 
+    private void StopAllUnits()
+    {
+        if (mapManager == null) return;
 
+        foreach (var kv in mapManager.UnitViewsById)
+        {
+            var view = kv.Value;
+            if (view != null)
+                view.Stop();
+        }
+    }
+    private void TriggerVictory()
+    {
+        if (gameOver) return;
+        gameOver = true;
+        gameWon = true;
+        StopAllUnits();
+        Debug.Log("YOU WIN");
+    }
+
+    private void TriggerDefeat()
+    {
+        if (gameOver) return;
+        gameOver = true;
+        gameWon = false;
+        Debug.Log("YOU LOSE");
+    }
 
 
     private void UnlockEdgesByKey(KeyType keyType)

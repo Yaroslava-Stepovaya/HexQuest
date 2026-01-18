@@ -61,6 +61,11 @@ public class UnitView : MonoBehaviour
         transform.position = BoundUnit.CurrentSector.CenterWorld;
     }
 
+    public void Stop()
+    {
+        moveSeq?.Kill();
+        moveSeq = null;
+    }
     /// <summary>
     /// ѕошаговое перемещение по списку секторов (центроидам).
     /// ƒлительность шага = дистанци€ / BoundUnit.MoveSpeed, зажимаем min/max.
@@ -101,6 +106,7 @@ public class UnitView : MonoBehaviour
 
             from = to;
         }
+
 
         moveSeq.OnComplete(() =>
         {

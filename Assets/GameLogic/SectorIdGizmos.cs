@@ -1,4 +1,4 @@
-// Assets/Scripts/Editor/SectorIdGizmos.cs
+﻿// Assets/Scripts/Editor/SectorIdGizmos.cs
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +19,10 @@ public class SectorIdGizmos : MonoBehaviour
 
         foreach (var s in map.Sectors)    //for each sector
         {
-            Handles.Label(s.CenterWorld, s.Id.ToString(), style);   //numerate each sector
+            if (map.mapAsset.WinSectorId != s.Id)
+                Handles.Label(s.CenterWorld, s.Id.ToString(), style);   //numerate each sector
+            else
+                Handles.Label(s.CenterWorld, "⚑", style);
         }
     }
 }

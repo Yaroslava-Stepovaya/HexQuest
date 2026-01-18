@@ -208,7 +208,7 @@ public class SectorEdgesView : MonoBehaviour
     }
     private TextMeshPro CreateLabel(GameObject centroid, int id)
     {
-        var go = new GameObject("SectorID");
+        var go = new GameObject("SectorID" + id.ToString());
         go.transform.SetParent(centroid.transform, false);
 
         // --- позиция: слегка в стороне от точки центроида ---
@@ -222,6 +222,10 @@ public class SectorEdgesView : MonoBehaviour
         tmp.color = TextSectorIDColor;
         tmp.text = id.ToString();
 
+        //if (mapManager.mapAsset.WinSectorId == id)
+        //    {
+        //    tmp.text += ("*");
+        //    }
         var mr = go.GetComponent<MeshRenderer>();
         if (mr != null) mr.sortingOrder = TextSectorIDNumberInLayer;
 

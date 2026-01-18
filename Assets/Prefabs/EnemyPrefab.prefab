@@ -243,5 +243,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitMediaObject: {fileID: 8602498175745985476}
   minStepDuration: 2
-  maxStepDuration: 7
+  maxStepDuration: 5
   ease: 5

@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
@@ -8,8 +8,8 @@ public class MapControlHandler : MonoBehaviour
 
     public enum EditSubMode
     {
-        ToggleEdge,   // как сейчас: добавлять/удалять ребро
-        PaintLock     // новый: назначать requiredKeyType и locked
+        ToggleEdge,   // РєР°Рє СЃРµР№С‡Р°СЃ: РґРѕР±Р°РІР»СЏС‚СЊ/СѓРґР°Р»СЏС‚СЊ СЂРµР±СЂРѕ
+        PaintLock     // РЅРѕРІС‹Р№: РЅР°Р·РЅР°С‡Р°С‚СЊ requiredKeyType Рё locked
     }
 
     [Header("Refs")]
@@ -28,13 +28,13 @@ public class MapControlHandler : MonoBehaviour
     [Header("Edit SubMode")]
     [SerializeField] private EditSubMode _editSubMode = EditSubMode.ToggleEdge;
 
-    // выбранный "ключ-тип" для PaintLock
+    // РІС‹Р±СЂР°РЅРЅС‹Р№ "РєР»СЋС‡-С‚РёРї" РґР»СЏ PaintLock
     [SerializeField] private KeyType _selectedKeyType = KeyType.None;
 
-    // хоткей переключения подрежима (пример)
+    // С…РѕС‚РєРµР№ РїРµСЂРµРєР»СЋС‡РµРЅРёСЏ РїРѕРґСЂРµР¶РёРјР° (РїСЂРёРјРµСЂ)
     [SerializeField] private KeyCode _toggleLockPaintKey = KeyCode.K;
 
-    private int _selected = -1;   // сектор A (для EditEdges)
+    private int _selected = -1;   // СЃРµРєС‚РѕСЂ A (РґР»СЏ EditEdges)
 
     private void Awake()
     {
@@ -56,6 +56,8 @@ public class MapControlHandler : MonoBehaviour
     private void Update()
 
     {
+
+        if (_gameManager.GameOver) return;
         //if (Input.GetKeyDown(KeyCode.K))
         //{
         //    if (!TryGetSectorUnderCursor(out var sector)) return;
@@ -77,7 +79,7 @@ public class MapControlHandler : MonoBehaviour
 
             if (_mode == Mode.Gameplay)
             {
-                // обычная логика
+                // РѕР±С‹С‡РЅР°СЏ Р»РѕРіРёРєР°
                 _gameManager?.HandleSectorClick(sector.Id);
             }
             else // EditEdges
@@ -88,7 +90,7 @@ public class MapControlHandler : MonoBehaviour
 
         if (_mode == Mode.EditEdges)
         {
-            //// горячие клавиши для A/B
+            //// РіРѕСЂСЏС‡РёРµ РєР»Р°РІРёС€Рё РґР»СЏ A/B
             //if (_selected >= 0 && TryGetSectorUnderCursor(out var hover) && hover.Id != _selected)
             //{
             //    if (Input.GetKeyDown(_addEdgeKey))
@@ -124,22 +126,29 @@ public class MapControlHandler : MonoBehaviour
     }
 
     private void HandleEditClick(int clickedId)
+
+
     {
+
+        if (_gameManager.GameOver)
+            return;
+
+
         if (_selected < 0)
         {
-            _selected = clickedId; // выбрали A
+            _selected = clickedId; // РІС‹Р±СЂР°Р»Рё A
             return;
         }
 
         if (_selected == clickedId)
         {
-            _selected = -1; // сняли выбор
+            _selected = -1; // СЃРЅСЏР»Рё РІС‹Р±РѕСЂ
             return;
         }
 
         if (_editSubMode == EditSubMode.ToggleEdge) 
         { 
-        // ЛКМ по B — быстрый toggle ребра A–B
+        // Р›РљРњ РїРѕ B вЂ” Р±С‹СЃС‚СЂС‹Р№ toggle СЂРµР±СЂР° AвЂ“B
             bool exists = _mapManager.AreNeighbors(_selected, clickedId);
             SafeSetEdge(_selected, clickedId, exists);
         }
@@ -149,7 +158,7 @@ public class MapControlHandler : MonoBehaviour
                 return;
             ChangeEdgeLock(_selected, clickedId, _selectedKeyType);
         }
-            // удобно «вести кистью»: новый A = только что кликнутый B
+            // СѓРґРѕР±РЅРѕ В«РІРµСЃС‚Рё РєРёСЃС‚СЊСЋВ»: РЅРѕРІС‹Р№ A = С‚РѕР»СЊРєРѕ С‡С‚Рѕ РєР»РёРєРЅСѓС‚С‹Р№ B
             _selected = clickedId;
     }
 
@@ -157,7 +166,7 @@ public class MapControlHandler : MonoBehaviour
     {
         if (a < 0 || b < 0 || a == b) return;
         _mapManager.SafeSetEdge(a, b, exists);
-        //_mapManager.RefreshEdgeVisual(a, b); // если есть визуальные линии — обновить
+        //_mapManager.RefreshEdgeVisual(a, b); // РµСЃР»Рё РµСЃС‚СЊ РІРёР·СѓР°Р»СЊРЅС‹Рµ Р»РёРЅРёРё вЂ” РѕР±РЅРѕРІРёС‚СЊ
     }
 
 
@@ -165,7 +174,7 @@ public class MapControlHandler : MonoBehaviour
     {
         if (a < 0 || b < 0 || a == b) return;
         _mapManager.ChangeEdgeLock(a, b, keyType);
-    //    //_mapManager.RefreshEdgeVisual(a, b); // если есть визуальные линии — обновить
+    //    //_mapManager.RefreshEdgeVisual(a, b); // РµСЃР»Рё РµСЃС‚СЊ РІРёР·СѓР°Р»СЊРЅС‹Рµ Р»РёРЅРёРё вЂ” РѕР±РЅРѕРІРёС‚СЊ
     }
 
 
@@ -191,14 +200,57 @@ public class MapControlHandler : MonoBehaviour
             : EventSystem.current.IsPointerOverGameObject();
     }
 
-    // (опционально) простая подсказка режима
+    private void DrawHeroHpHUD()
+    {
+        if (_gameManager == null || _gameManager.Hero == null) return;
+
+        int hp = _gameManager.Hero.HP; // РёР»Рё GetHP(), СЃРј. РЅРёР¶Рµ
+
+        float w = 160f;
+        float h = 80f;
+        float x = Screen.width - w - 10f;
+        float y = 10f;
+
+        GUILayout.BeginArea(new Rect(x, y, w, h), GUI.skin.box);
+        GUILayout.Label("<b>Reach sector </b>" + _gameManager.MapManager.mapAsset.WinSectorId.ToString()+ "в–І", Rich());
+        GUILayout.Label("<b>HERO</b>", Rich());
+        GUILayout.Label($"HP: {hp}", Rich());
+        GUILayout.EndArea();
+    }
+
+    // (РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ) РїСЂРѕСЃС‚Р°СЏ РїРѕРґСЃРєР°Р·РєР° СЂРµР¶РёРјР°
     private void OnGUI()
     {
-        if (_mode != Mode.EditEdges) return;
+
+        if (_gameManager.GameOver)
+        
+        
+        {
+            string text = _gameManager.GameWon ? "YOU WIN" : "YOU LOSE";
+
+            GUIStyle style = new GUIStyle(GUI.skin.label);
+            style.fontSize = 100;
+            style.alignment = TextAnchor.MiddleCenter;
+            style.normal.textColor = Color.yellow;
+
+            GUI.Label(
+                new Rect(0, Screen.height / 2 - 40, Screen.width, 80),
+                text,
+                style
+            );
+            return;
+        }
+
+        if (_mode != Mode.EditEdges) 
+        {
+            DrawHeroHpHUD();
+            return;
+        }
+        ;
         GUILayout.BeginArea(new Rect(10, 10, 360, 200), GUI.skin.box);
         GUILayout.Label("<b>Edge Edit Mode</b> (E to toggle)", Rich());
         GUILayout.Label("<b>ToggleEdge/PaintLock Mode</b> (K to toggle)", Rich());
-        GUILayout.Label($"Selected A: {(_selected >= 0 ? _selected.ToString() : "—")}");
+        GUILayout.Label($"Selected A: {(_selected >= 0 ? _selected.ToString() : "вЂ”")}");
 
         GUILayout.Label($"SubMode:" + _editSubMode.ToString());
         if (_editSubMode == EditSubMode.PaintLock)
@@ -250,7 +302,7 @@ public class MapControlHandler : MonoBehaviour
 //            if (_mapManager.TryGetSectorByCell(cell, out Sector sector))
 //            {
 //                Debug.Log($"Clicked sector {sector.Id}");
-//                // действия по клику
+//                // РґРµР№СЃС‚РІРёСЏ РїРѕ РєР»РёРєСѓ
 //                _gameManager.HandleSectorClick(sector.Id);
 //            }
 //        }

@@ -38,7 +38,11 @@ public class EnemyAgent : MonoBehaviour
     }
 
     private void OnArrivedAtSector(Unit unit, int sectorId)
+
+
     {
+
+        if (_gameManager.GameOver) return;
         if (unit == null) return;
 
         // Герой пришёл в новый сектор -> "разбудить" врагов, которые теперь могут видеть

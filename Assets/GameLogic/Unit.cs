@@ -16,6 +16,7 @@ public class Unit
     // === Private Fields ===
     private bool isMoving;   // внутренний флаг движения
     private int hitPoints;   // здоровье
+    public int HP => hitPoints;
 
     // === Constructor ===
     public Unit(int id, string name, Sector startSector, int startHP, float moveSpeed = 1f)
@@ -41,6 +42,7 @@ public class Unit
     public void TakeDamage(int amount)
     {
         // TODO: уменьшение HP
+        hitPoints -= amount;
     }
 
     public void Die()
