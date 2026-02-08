@@ -26,7 +26,7 @@ The player must guide the hero from a starting sector (A) to a target sector (B)
 
 ## 🛠 Key Features
 
-- Graph-based pathfinding (A*)
+- Graph-based pathfinding (Breadth-First Search, BFS)
 - Modular architecture with clear logic / view separation
 - Custom level editor
 - Map serialization using ScriptableObjects
