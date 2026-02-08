@@ -38,8 +38,8 @@ The player must guide the hero from a starting sector (A) to a target sector (B)
 ## 📺 Project Demo
 
 Gameplay and architecture overview video:  
-👉 YouTube (Unlisted):  
-[link will be added here]
+👉 GoogleDrive:  
+[[link will be added here]](https://drive.google.com/file/d/1jlKyisQGtZSIeJO2GikzwwUioaEPdS_6/view?usp=sharing)
 
 ---
 
